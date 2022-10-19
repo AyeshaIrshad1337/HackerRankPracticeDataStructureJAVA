@@ -1,0 +1,16 @@
+//Here arr = Arraylist of Integer array and n is for size of an array , k is for from which index we are splitting the array
+void reverseInGroups(ArrayList<Integer> arr, int n , int k){
+            int temp;
+            for(int i = 0; i< n ;i+=k){
+              int end = i+k-1;
+              if(end > = n) end=n-1;
+              int start = i;
+              while(start < end){
+               Collection.swap(arr,start,end);
+               end--;
+               start++;
+               }
+              }
+            }  
+               
+      
