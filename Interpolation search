@@ -1,0 +1,21 @@
+
+class HelloWorld {
+    public static int interpol(int[] arr, int lowIndex , int highIndex , int key ){
+        if(lowIndex<=highIndex && key>=arr[lowIndex] && key <=arr[highIndex]){
+            int pos = lowIndex +((highIndex-lowIndex)/(arr[highIndex]-arr[lowIndex]))*(key-arr[lowIndex]);
+            if(arr[pos]==key) return pos;
+            if(arr[pos]>key) return interpol(arr,lowIndex,pos-1,key);
+            if(arr[pos]<key) return interpol(arr,pos+1,highIndex,key);
+        }
+        return -1;
+    }
+    public static void main(String[] args) {
+
+        int[] arr ={1,2,3,4,5};
+        if(interpol(arr,0,4,2)!=-1){
+            System.out.println("exists");
+        }else{
+            System.out.println("Not exists");
+        }
+    }
+}
