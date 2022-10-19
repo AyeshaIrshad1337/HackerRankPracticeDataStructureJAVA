@@ -1,0 +1,9 @@
+//Checking whether the array is equal (if they have similar size and data present in any order) , i.e array A = {1,2,3,4,5} and B={2,3,4,1,5}  it will return true
+public static boolean check(long A[],long B[],int N)
+    { Arrays.sort(A);
+    Arrays.sort(B);
+        for (int i =0; i< N ; i++){
+            if(A[i] != B[i])
+            return false;}
+        return true;
+    }
