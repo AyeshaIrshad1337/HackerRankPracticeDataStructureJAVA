@@ -1,0 +1,20 @@
+public void quick(int[] arr , int low,int high){
+if(low>= high){
+return;
+}
+int pivot = arr[low];
+swap(arr,low,high);
+int leftpt = low , rightpt=high;
+while(leftpt<rightpt){
+while(arr[leftpt]<=pivot && leftpt<rightpt){
+  leftpt++;
+}
+while(arr[rightpt]>=pivot && leftpt<rightpt){
+rightpt--;
+}
+swap(arr,leftpt,rightpt);
+}
+swap(arr,leftpt,high);
+quick(arr,low,leftpt-1);
+quick(arr,leftpt+1,high);
+}
