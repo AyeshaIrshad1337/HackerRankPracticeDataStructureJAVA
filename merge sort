@@ -1,0 +1,36 @@
+void mergeSort(int[] arr){
+int s = arr.length();
+if(s<2){return;}
+int mid =s/2;
+int[] left=new int[mid];
+int[] right=new int[si-mid];
+for (int i =0 ; i< mid;i++){
+left[i]=arr[i];
+}
+
+for (int i =mid ; i<si;i++){
+right[i-mid]=arr[i];
+}
+mergeSort(left);
+mergeSort(right);
+merge(arr,left,right);
+}
+void merge(int[] arr, int[] left, int[] right){
+int sl=left.length, rl= right.length;
+int i =0 , j =0, k=0;
+while(i<sl && j <rl){
+if(left[i]<=right[j]){
+arr[k]=left[++i];
+}else{
+arr[k]=right[++j];
+}
+k++;
+}
+while(i<sl){
+arr[++k]=left[++i];
+}
+while(j<rl){
+arr[++k]=right[++j];
+
+}
+}
