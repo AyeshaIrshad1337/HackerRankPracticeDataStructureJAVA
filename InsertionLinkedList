@@ -1,0 +1,83 @@
+public class LinkedList{
+
+    class Node{
+        int data;
+        Node next;
+        Node(int data){
+            this.data=data;
+            this.next=null;
+        }
+    }
+    Node head=null,tail=null;
+    int size =0;
+    void addNode(int data){
+        Node newNode =new Node(data);
+        if(head==null){
+            head=newNode;
+            tail=newNode;
+        }else{
+            tail.next=newNode;
+            tail=tail.next;
+        }
+        size++;
+    }
+    void addHead(int data){
+        Node newNode =new Node(data);
+        if(size==0){
+            head=tail=newNode;
+
+        }else{
+            newNode.next=head;
+            head=newNode;
+        }
+        size++;
+    }
+    Node getNode(int index){
+        Node p=head;
+        for(int i=0;i<index;i++){
+            p=p.next;
+        }
+        return p;
+    }
+    void AtAnyNode(int data,int index){
+        if(index<0||size<index){
+            return;
+        }
+        if(index ==0){
+            addHead(data);
+        }
+        else if(index==size){
+            addNode(data);
+        }
+        else{
+            Node preNode=getNode(index-1);
+            Node newNode = new Node(data);
+            newNode.next=preNode.next;
+            preNode.next=newNode;
+            size++;
+        }
+    }
+    void print(){
+        if(head==null){
+            System.out.print("Empty Linked List");
+            return ;
+        }
+        Node current=head;
+        while(current!=null){
+            System.out.print(current.data+"->");
+            current=current.next;
+        }
+        System.out.println();
+    }
+    public static void main(String[] args) {
+     LinkedList a = new LinkedList();
+
+     a.addHead(0);
+     a.addNode(2);
+    a.AtAnyNode(10, 0);
+     a.addHead(5);
+    a.AtAnyNode(7, 2);
+     a.addNode(1);
+     a.print();       
+    }
+}
