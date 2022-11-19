@@ -1,0 +1,13 @@
+class HeapWithArray{
+    int[] arr;
+    int size;
+    void Create(int size){
+        arr=new int[size+1];
+        size=0;
+        System.out.println("heap Created!!");   
+    }
+    public static void main(String[] args) {
+        HeapWithArray obj  = new HeapWithArray();
+        obj.Create(7);
+    }
+}
