@@ -1,0 +1,88 @@
+class heap{
+    int[] array;
+    int size;
+    void create(int size){
+        array=new int[size+1];
+        size=0;
+    }
+    void insert(int data){
+   array[size+1]=data;
+   size++;
+   heapifyBottomToTop(size);
+    }
+    void heapifyBottomToTop(int index){
+        if(index<=1){
+            return;
+        }
+       int parent=index/2;
+        if(array[index]<array[parent]){
+            swap(index,parent,array);
+        }
+        heapifyBottomToTop(parent);
+    }
+    void swap(int a ,int b,int[] arr ){
+        int tmp=arr[a];
+        arr[a]=arr[b];
+        arr[b]=tmp;
+    }
+    int size(){
+        return size;
+    }
+    boolean isEmpty(){
+        if(size<=0){
+            return true;
+        }
+        return false;
+    }
+    void peek(){
+        if(size<=0){
+            System.out.println("Value doesnt exsists");
+        return;
+        }
+              System.out.println(array[1]);       
+    }
+    int extract(){
+        if(size==0){
+            return -1;
+        }
+        int extractedValue=array[1];
+        array[1]=array[size];
+        size--;
+        heapifyTopToBottom(1);
+        return extractedValue;
+    }
+    void heapifyTopToBottom(int idx){
+        int left=idx*2;
+        int right=left+1;
+        int smallestChild=0;
+        if(size<left) return; // if current node has no child
+        if(size==left) //if current node has only left child
+        {
+            if(array[idx]>array[left])
+            swap(idx,left,array);
+        }
+        else{
+            if(array[left]<array[right]){
+                smallestChild=left;
+            }
+            else{
+                smallestChild=right;
+            }
+            if(array[idx]>array[smallestChild])          
+            swap(idx,smallestChild,array);
+        }
+        heapifyTopToBottom(smallestChild);
+    }
+    public static void main(String[] args) {
+    int[] arr={10,20,30,40,50,60,70};
+    heap obj = new heap();
+    obj.create(7);
+    for(int i =0;i<7;i++)    
+        obj.insert(arr[i]);
+    System.out.println(obj.size());
+    obj.peek();
+    System.out.println(obj.extract());
+    System.out.println(obj.extract());
+                  
+    }
+}
